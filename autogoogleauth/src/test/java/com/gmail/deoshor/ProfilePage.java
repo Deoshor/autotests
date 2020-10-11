@@ -22,7 +22,7 @@ public class ProfilePage {
     }
     //метод для осуществления нажатия кнопки профиля
     public void clickProfileMenu() {
-        profileBtn.click();
+        profileMenu.click();
     }
     //метод для осуществления нажатия кнопки выхода из аккаунта
     public void clickLogoutBtn() {
