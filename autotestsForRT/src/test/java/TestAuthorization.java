@@ -1,24 +1,26 @@
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import pages.LoginPage;
+import pages.PasswdPage;
 
 import java.util.concurrent.TimeUnit;
 
 public class TestAuthorization {
-    private WebDriver driver;
-    private LoginPage loginPage;
-    private PasswdPage passwdPage;
+    private static WebDriver driver;
+    private static LoginPage loginPage;
+    private static PasswdPage passwdPage;
 
-    @BeforeMethod
-    public void setUp() {
-        System.setProperty("webriver.chrome.driver", "C://webdrivers/chromedriver.exe");
+    @BeforeClass
+    public static void setUp() {
+        System.setProperty("webdriver.chrome.driver", "C:/webdrivers/chromedriver.exe");
         driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
         passwdPage = new PasswdPage(driver);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://www.mantisbt.org/bugs/login_page.php");
+        driver.get("http://www.mantisbt.org/bugs/login_page.php");
     }
 
     @Test
@@ -26,18 +28,12 @@ public class TestAuthorization {
         loginPage.inputLogin(ConfProperties.getProperty("login"));
         loginPage.clickBtnIn();
 
-        //Проверяем заголок страницы
-        String actualTitle = driver.getTitle();
-        if (actualTitle.contains("?????????")) {
-            passwdPage.inputPasswd(ConfProperties.getProperty("passwd"));
-            passwdPage.clickBtnIn();
-        } else {
-            System.out.println("Test case : Failed");
-        }
+        passwdPage.inputPasswd(ConfProperties.getProperty("passwd"));
+        passwdPage.clickBtnIn();
     }
 
-    @AfterMethod
-    public void endSession(){
+    @AfterClass
+    public static void endSession(){
         driver.quit();
     }
 }
