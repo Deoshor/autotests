@@ -13,34 +13,35 @@ public class BugReportPage {
         this.driver = driver;
     }
 
-    //Определяем локатор выбора "Категория" 27
-    Select category = new Select(driver.findElement(By.id("category_id")));
+    //Определяем локатор выбора "Категория"
+    private final By category = By.id("category_id");
+    Select categorySelect = new Select((WebElement) category);
     //Определяем локатор поля "Тема"
-    WebElement topicField = driver.findElement(By.id("summary"));
+    private final By topicField = By.id("summary");
     //Определяем локатор поля "Описание"
-    WebElement descField = driver.findElement(By.id("description"));
+    private final By descField = By.id("description");
     //Определяем локатор кнопки "Создать задачу"
-    WebElement btnToMakeTask = driver.findElement(By.xpath("//*[contains(@value, 'Создать задачу')]"));
+    private final By btnToMakeTask = By.cssSelector("input[value='Создать задачу']");
     //Определяем локатор абзаца с надписью "Действие успешно выполнено."
-    private By acceptMakeTask = By.className("bold bigger-110");
+    private final By acceptMakeTask = By.className("bold bigger-110");
 
 
 
     //Метод для ввода текста в поле "Тема"
     public void inputTopic(String topic){
-        topicField.sendKeys(topic);
+        driver.findElement(topicField).sendKeys(topic);
     }
     //Метод для ввода текста в поле "Описание"
     public void inputDesc(String desc){
-        descField.sendKeys(desc);
+        driver.findElement(descField).sendKeys(desc);
     }
     //Метод выбора категории
     public void getCategory(String value) {
-        category.selectByVisibleText(value);
+        categorySelect.selectByVisibleText(value);
     }
     //Метод для создания задачи
     public void clickBtnToMakeTask() {
-        btnToMakeTask.click();
+        driver.findElement(btnToMakeTask).click();
     }
     //Метод для получения текста из абзаца
     public String getAccept(){
