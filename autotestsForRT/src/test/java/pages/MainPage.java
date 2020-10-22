@@ -15,17 +15,16 @@ public class MainPage {
 
     //Определение локатора кнопки "Зарегистрировать новую учетную запись"
     @FindBy(xpath = "//*[contains(@class, 'btn btn-primary btn-xs')]") private WebElement btnToRegistration;
-
     //Определение локатора кнопки "Создать задачу"
-    @FindBy(xpath = "//*[contains(@class, 'menu-icon fa fa-edit')]") private WebElement btnToMakeTask;
+    @FindBy(xpath = "//*[contains(@class, 'btn btn-primary btn-sm')]") private WebElement btnToCreateTask;
 
     //метод для осуществления нажатия кнопки "Зарегистрировать новую учетную запись"
     public void clickBtnToRegistration() {
         btnToRegistration.click();
     }
     //метод для осуществления нажатия кнопки "Создать задачу"
-    public void clickBtnToMakeTask() {
-        btnToMakeTask.click();
+    public void clickBtnToCreateTask() {
+        btnToCreateTask.click();
     }
 
 }

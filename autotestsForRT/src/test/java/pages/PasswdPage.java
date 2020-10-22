@@ -17,6 +17,7 @@ public class PasswdPage {
     @FindBy(xpath = "//*[contains(@value, 'Вход')]") private WebElement btnIn;
 
 
+
     //Метод для ввода пароля
     public void inputPasswd(String passwd) {
         passwdField.sendKeys(passwd);
@@ -25,4 +26,5 @@ public class PasswdPage {
     public void clickBtnIn() {
         btnIn.click();
     }
+
 }

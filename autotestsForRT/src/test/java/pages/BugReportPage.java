@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
@@ -13,9 +14,9 @@ public class BugReportPage {
         this.driver = driver;
     }
 
+
     //Определяем локатор выбора "Категория"
     private final By category = By.id("category_id");
-    Select categorySelect = new Select((WebElement) category);
     //Определяем локатор поля "Тема"
     private final By topicField = By.id("summary");
     //Определяем локатор поля "Описание"
@@ -37,6 +38,7 @@ public class BugReportPage {
     }
     //Метод выбора категории
     public void getCategory(String value) {
+        Select categorySelect = new Select((WebElement) category);
         categorySelect.selectByVisibleText(value);
     }
     //Метод для создания задачи
@@ -47,7 +49,5 @@ public class BugReportPage {
     public String getAccept(){
         return driver.findElement(acceptMakeTask).getText();
     }
-
-
 
 }
