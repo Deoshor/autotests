@@ -22,11 +22,6 @@ public class TestCreateTask {
         mainPage = new MainPage(driver);
         loginPage = new LoginPage(driver);
         passwdPage = new PasswdPage(driver);
-        //Авторизуемся
-        loginPage.inputLogin(ConfProperties.getProperty("login"));
-        loginPage.clickBtnIn();
-        passwdPage.inputPasswd(ConfProperties.getProperty("passwd"));
-        passwdPage.clickBtnIn();
         previewBRPage = new PreviewBRPage(driver);
         bugReportPage = new BugReportPage(driver);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -35,6 +30,11 @@ public class TestCreateTask {
 
     @Test
     public void createTask() {
+        //Авторизуемся
+        loginPage.inputLogin(ConfProperties.getProperty("login"));
+        loginPage.clickBtnIn();
+        passwdPage.inputPasswd(ConfProperties.getProperty("passwd"));
+        passwdPage.clickBtnIn();
         //Нажимаем кнопку "Создать задачу"
         mainPage.clickBtnToMakeTask();
         //Нажимаем кнопку "Выбрать проект"
