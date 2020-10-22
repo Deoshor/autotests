@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.PasswdPage;
-
 import java.util.concurrent.TimeUnit;
 
 public class TestAuthorization {
@@ -19,12 +18,14 @@ public class TestAuthorization {
         driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
         passwdPage = new PasswdPage(driver);
+        //окно полноэкранного режима
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://www.mantisbt.org/bugs/login_page.php");
     }
 
     @Test
-    public void signIn() {
+    public static void signIn() {
         loginPage.inputLogin(ConfProperties.getProperty("login"));
         loginPage.clickBtnIn();
 
