@@ -24,4 +24,5 @@ public class LoginPage {
     public void clickBtnIn() {
         btnIn.click();
     }
+
 }

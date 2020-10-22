@@ -11,6 +11,8 @@ public class MainPage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
+
+
     //Определение локатора кнопки "Зарегистрировать новую учетную запись"
     @FindBy(xpath = "//*[contains(@class, 'btn btn-primary btn-xs')]") private WebElement btnToRegistration;
 
@@ -25,4 +27,5 @@ public class MainPage {
     public void clickBtnToMakeTask() {
         btnToMakeTask.click();
     }
+
 }

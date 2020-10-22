@@ -21,6 +21,10 @@ public class BugReportPage {
     WebElement descField = driver.findElement(By.id("description"));
     //Определяем локатор кнопки "Создать задачу"
     WebElement btnToMakeTask = driver.findElement(By.xpath("//*contains[(@value, 'Создать задачу')]"));
+    //Определяем локатор абзаца с надписью "Действие успешно выполнено."
+    private By acceptMakeTask = By.className("bold bigger-110");
+
+
 
     //Метод для ввода текста в поле "Тема"
     public void inputTopic(String topic){
@@ -28,14 +32,21 @@ public class BugReportPage {
     }
     //Метод для ввода текста в поле "Описание"
     public void inputDesc(String desc){
-        topicField.sendKeys(desc);
+        descField.sendKeys(desc);
     }
     //Метод выбора категории
     public void getCategory(String value) {
         category.selectByVisibleText(value);
     }
-    //Метод выбора категории
+    //Метод для создания задачи
     public void clickBtnToMakeTask() {
         btnToMakeTask.click();
     }
+    //Метод для получения текста из абзаца
+    public String getAccept(){
+        return driver.findElement(acceptMakeTask).getText();
+    }
+
+
+
 }
