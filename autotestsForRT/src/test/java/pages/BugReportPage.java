@@ -20,7 +20,7 @@ public class BugReportPage {
     //Определяем локатор поля "Описание"
     WebElement descField = driver.findElement(By.id("description"));
     //Определяем локатор кнопки "Создать задачу"
-    WebElement btnToMakeTask = driver.findElement(By.xpath("//*contains[(@value, 'Создать задачу')]"));
+    WebElement btnToMakeTask = driver.findElement(By.xpath("//*[contains(@value, 'Создать задачу')]"));
     //Определяем локатор абзаца с надписью "Действие успешно выполнено."
     private By acceptMakeTask = By.className("bold bigger-110");
 
