@@ -22,7 +22,7 @@ try:
     book = browser.find_element_by_id("book")
     book.click()
 
-    #доп.задание с math
+    #доп. задание с math
     button = browser.find_element_by_xpath("//*[@id='solve']")
     browser.execute_script("return arguments[0].scrollIntoView(true);", button)
 
