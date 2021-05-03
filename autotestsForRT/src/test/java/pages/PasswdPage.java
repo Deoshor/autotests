@@ -11,20 +11,18 @@ public class PasswdPage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    //определение локатора поля ввода пароля
+
     @FindBy(xpath = "//*[contains(@id, 'password')]") private WebElement passwdField;
-    //Определение локатора кнопки "Вход"
     @FindBy(xpath = "//*[contains(@value, 'Вход')]") private WebElement btnIn;
 
-
-
-    //Метод для ввода пароля
     public void inputPasswd(String passwd) {
         passwdField.sendKeys(passwd);
     }
-    //метод для осуществления нажатия кнопки "Вход"
     public void clickBtnIn() {
         btnIn.click();
     }
+
+    @FindBy(xpath = "//*[@id=\"breadcrumbs\"]/ul/li/a") private WebElement text;
+    public String getText() { return text.getText(); }
 
 }

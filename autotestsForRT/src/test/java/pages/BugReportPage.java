@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,40 +13,23 @@ public class BugReportPage {
         this.driver = driver;
     }
 
+    @FindBy(xpath = "//*[@id=\"select-project-form\"]/div/div[2]/div[2]/input") private WebElement btnToAcceptProject;
+    @FindBy(id = "category_id") private WebElement select;
+    @FindBy(id = "summary") private WebElement topicField;
+    @FindBy(id = "description") private WebElement descField;
+    @FindBy(css = "input[value='Создать задачу']") private WebElement btnToMakeTask;
+    @FindBy(className = "bold bigger-110") private WebElement acceptMakeTask;
 
-    //Определяем локатор выбора "Категория"
-    private final By category = By.id("category_id");
-    //Определяем локатор поля "Тема"
-    private final By topicField = By.id("summary");
-    //Определяем локатор поля "Описание"
-    private final By descField = By.id("description");
-    //Определяем локатор кнопки "Создать задачу"
-    private final By btnToMakeTask = By.cssSelector("input[value='Создать задачу']");
-    //Определяем локатор абзаца с надписью "Действие успешно выполнено."
-    private final By acceptMakeTask = By.className("bold bigger-110");
-
-
-
-    //Метод для ввода текста в поле "Тема"
-    public void inputTopic(String topic){
-        driver.findElement(topicField).sendKeys(topic);
+    public void clickBtnToAcceptProject() { btnToAcceptProject.click(); }
+    public void getCategory(String value){
+        Select dropdown = new Select(select);
+        dropdown.selectByVisibleText(value);
     }
-    //Метод для ввода текста в поле "Описание"
-    public void inputDesc(String desc){
-        driver.findElement(descField).sendKeys(desc);
-    }
-    //Метод выбора категории
-    public void getCategory(String value) {
-        Select categorySelect = new Select((WebElement) category);
-        categorySelect.selectByVisibleText(value);
-    }
-    //Метод для создания задачи
-    public void clickBtnToMakeTask() {
-        driver.findElement(btnToMakeTask).click();
-    }
-    //Метод для получения текста из абзаца
-    public String getAccept(){
-        return driver.findElement(acceptMakeTask).getText();
-    }
+    public void inputTopic(String topic) { topicField.sendKeys(topic); }
+    public void inputDesc(String desc) { descField.sendKeys(desc); }
+    public void clickBtnToMakeTask() { btnToMakeTask.click(); }
+    public String getAccept() { return acceptMakeTask.getText(); }
 
 }
+
+
